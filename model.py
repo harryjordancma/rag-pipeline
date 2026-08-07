@@ -26,7 +26,21 @@ def load_text_file(path : str):
        return f.read()
 
 # Step 2 - load_text_directory
-def load_text_directory(directory):
+def load_text_directory(directory: str):
+    """
+    Loading all text files in a single directory
+
+    Parameters
+    ----------
+    directory: str 
+        Path to directory
+
+    Returns
+    -------
+    list[str]
+        list of all the loaded text files
+        
+    """
     all_files = os.listdir(directory)
     text_files = [filename for filename in all_files if filename.endswith(".txt")]
     text_files = sorted(text_files)
