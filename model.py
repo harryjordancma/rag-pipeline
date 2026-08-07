@@ -7,7 +7,21 @@ Assembled from your step-by-step solutions.
 import numpy as np
 
 # Step 1 - load_text_file
-def load_text_file(path):
+def load_text_file(path : str):
+    """
+    Reads the file specified in the path
+
+    Parameters
+    ----------
+        path : str
+            path to the text file
+
+    Returns
+    -------
+        str
+            single string of the text file
+
+    """
     with open(path, "r", encoding="utf-8") as f:
        return f.read()
 
