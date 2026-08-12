@@ -121,9 +121,6 @@ def chunk_by_sentences(text, max_chars):
     chunks = []
     current_chunk = []
 
-    if not sentences:
-        return chunks
-
     for sentence in sentences:
         current_chunk_length = len(" ".join(current_chunk))
         if not current_chunk:
@@ -142,7 +139,8 @@ def chunk_by_sentences(text, max_chars):
             chunks.append(" ".join(current_chunk))
             current_chunk = [sentence]
 
-    chunks.append(" ".join(current_chunk))
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
 
     return chunks
 
