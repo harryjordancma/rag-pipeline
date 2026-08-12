@@ -47,8 +47,35 @@ def load_text_directory(directory: str):
 
     return [load_text_file(os.path.join(directory, text_file)) for text_file in text_files]
 
-# Step 3 - extract_text_from_html (not yet solved)
-# TODO: implement
+# Step 3 - extract_text_from_html
+from html.parser import HTMLParser
+
+class TextExtractor(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ignore = False
+        self.text_data = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.ignore = True
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.ignore = False
+
+    def handle_data(self, data):
+        if self.ignore:
+            pass
+        else:
+            self.text_data.append(data)
+
+def extract_text_from_html(html):
+    htmlextractor = TextExtractor()
+    htmlextractor.feed(html)
+
+
+    return "".join(htmlextractor.text_data)
 
 # Step 4 - normalize_text (not yet solved)
 # TODO: implement
