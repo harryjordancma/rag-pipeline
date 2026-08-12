@@ -77,8 +77,12 @@ def extract_text_from_html(html):
 
     return "".join(htmlextractor.text_data)
 
-# Step 4 - normalize_text (not yet solved)
-# TODO: implement
+# Step 4 - normalize_text
+import unicodedata
+
+def normalize_text(text):
+    text = unicodedata.normalize("NFKC", text)
+    return " ".join(text.split())
 
 # Step 5 - make_document (not yet solved)
 # TODO: implement
