@@ -84,8 +84,12 @@ def normalize_text(text):
     text = unicodedata.normalize("NFKC", text)
     return " ".join(text.split())
 
-# Step 5 - make_document (not yet solved)
-# TODO: implement
+# Step 5 - make_document
+def make_document(text, source, title):
+    return {"text": text,
+            "source": source,
+            "title": title
+        }
 
 # Step 6 - chunk_fixed_size (not yet solved)
 # TODO: implement
